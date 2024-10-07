@@ -206,7 +206,7 @@ class _Selection(DescriptionWidget, ValueWidget, CoreWidget):
             # the options list changed
             return
 
-        if self._initializing_traits_ is not True:
+        if not self._initializing_traits_:
             if len(options) > 0:
                 if self.index == 0:
                     # Explicitly trigger the observers to pick up the new value and
@@ -339,7 +339,7 @@ class _MultipleSelection(DescriptionWidget, ValueWidget, CoreWidget):
         options = self._options_full
         self.set_trait('_options_labels', tuple(i[0] for i in options))
         self._options_values = tuple(i[1] for i in options)
-        if self._initializing_traits_ is not True:
+        if not self._initializing_traits_:
             self.index = ()
 
     @validate('index')
@@ -620,7 +620,7 @@ class SelectionRangeSlider(_MultipleSelectionNonempty):
         options = self._options_full
         self.set_trait('_options_labels', tuple(i[0] for i in options))
         self._options_values = tuple(i[1] for i in options)
-        if self._initializing_traits_ is not True:
+        if not self._initializing_traits_:
             self.index = (0, 0)
 
     @validate('index')
